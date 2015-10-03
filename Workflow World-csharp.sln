@@ -1,7 +1,11 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
+Project("{4409F1EC-C7BF-0C05-DB73-020967951CE2}") = "Workflow World", "Assembly-CSharp-firstpass-vs.csproj", "{5743B22A-FA26-AAC9-EFDA-238FCC0DE517}"
+EndProject
 Project("{4409F1EC-C7BF-0C05-DB73-020967951CE2}") = "Workflow World", "Assembly-CSharp-vs.csproj", "{40C0EE56-3119-3D4F-608E-E947989FB65E}"
+EndProject
+Project("{4409F1EC-C7BF-0C05-DB73-020967951CE2}") = "Workflow World", "Assembly-CSharp-Editor-vs.csproj", "{CB215815-DB23-6474-504A-8BD6351B63EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +13,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5743B22A-FA26-AAC9-EFDA-238FCC0DE517}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5743B22A-FA26-AAC9-EFDA-238FCC0DE517}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5743B22A-FA26-AAC9-EFDA-238FCC0DE517}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5743B22A-FA26-AAC9-EFDA-238FCC0DE517}.Release|Any CPU.Build.0 = Release|Any CPU
 		{40C0EE56-3119-3D4F-608E-E947989FB65E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{40C0EE56-3119-3D4F-608E-E947989FB65E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40C0EE56-3119-3D4F-608E-E947989FB65E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40C0EE56-3119-3D4F-608E-E947989FB65E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB215815-DB23-6474-504A-8BD6351B63EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB215815-DB23-6474-504A-8BD6351B63EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB215815-DB23-6474-504A-8BD6351B63EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB215815-DB23-6474-504A-8BD6351B63EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-		GlobalSection(MonoDevelopProperties) = preSolution
+																GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
