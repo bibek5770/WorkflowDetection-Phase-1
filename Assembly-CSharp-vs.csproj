@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\Controller.cs" />
      <Compile Include="Assets\Scripts\LightSwitch.cs" />
      <Compile Include="Assets\Scripts\MirrorTrack.cs" />
+     <Compile Include="Assets\Scripts\Properties.cs" />
      <Compile Include="Assets\Scripts\ToggleLamp.cs" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\Shaders\InvertFilter.shader" />
