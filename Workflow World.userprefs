@@ -1,8 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\AuraDetector.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Recognition.cs">
     <Files>
-      <File FileName="Assets\Scripts\AuraDetector.cs" Line="54" Column="3" />
+      <File FileName="Assets\Scripts\BotControlScript.cs" Line="40" Column="35" />
+      <File FileName="Assets\Scripts\AutomataScript.cs" Line="90" Column="23" />
+      <File FileName="Assets\Scripts\Properties.cs" Line="24" Column="3" />
+      <File FileName="Assets\Scripts\Recognition.cs" Line="22" Column="42" />
+      <File FileName="Assets\Scripts\AuraDetector.cs" Line="79" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

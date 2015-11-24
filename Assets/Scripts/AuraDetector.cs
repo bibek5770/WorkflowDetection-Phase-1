@@ -24,6 +24,8 @@ public class AuraDetector : MonoBehaviour {
         colTrans = thisCol.transform;
 	}
 
+	public GameObject selectedGo = null;
+	public List<GameObject> selectedObs = new List<GameObject>();
 	void Update()
 	{
 		// show current viewed
@@ -33,6 +35,7 @@ public class AuraDetector : MonoBehaviour {
 		{
             Collider hitCol = hit.collider;
             GameObject hitGo = hitCol.gameObject;
+			selectedGo = hitGo;
             float distance = (colTrans.position - hitCol.ClosestPointOnBounds(colTrans.position)).magnitude;
             if (hitGo.CompareTag("viewable") &&  distance <= thisCol.radius)
             {
@@ -78,7 +81,7 @@ public class AuraDetector : MonoBehaviour {
 		}
 	}
 
-	List<Collider> auraObs = new List<Collider>();
+	public List<Collider> auraObs = new List<Collider>();
 	bool auraDirty = false;
 	void OnTriggerEnter(Collider other)
 	{
