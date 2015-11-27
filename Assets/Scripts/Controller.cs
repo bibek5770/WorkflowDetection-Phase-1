@@ -26,6 +26,6 @@ public class Controller : MonoBehaviour {
             Cursor.lockState = CursorLockMode.None;
         }
 
-        Debug.Log(freezeMouse ? "freeze" : "nofreeze");
+        
 	}
 }

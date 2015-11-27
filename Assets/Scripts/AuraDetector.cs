@@ -14,6 +14,14 @@ public class AuraDetector : MonoBehaviour {
 	public Canvas AuraCanvas;
 	public Text AuraText;
 
+	public enum AuraType
+	{
+		PC = 1,
+		NPC = 2
+	};
+
+	public AuraType auraType = AuraType.NPC;
+
 	void Start () 
 	{
 		thisCol = GetComponent<SphereCollider>();
@@ -29,29 +37,49 @@ public class AuraDetector : MonoBehaviour {
 	void Update()
 	{
 		// show current viewed
-		RaycastHit hit;
-		Ray ray = new Ray(thisTrans.position, thisTrans.forward);
-		if(Physics.Raycast(ray, out hit))
+		if(auraType == AuraType.PC)
 		{
-            Collider hitCol = hit.collider;
-            GameObject hitGo = hitCol.gameObject;
-			selectedGo = hitGo;
-            float distance = (colTrans.position - hitCol.ClosestPointOnBounds(colTrans.position)).magnitude;
-            if (hitGo.CompareTag("viewable") &&  distance <= thisCol.radius)
-            {
-                HoverCanvas.enabled = true;
-                HoverText.text = "Name: " + hitGo.name + "\n" +
-                    "Distance: " + distance;
-            }
-            else
-            {
-                HoverCanvas.enabled = false;
-            }
-			
+			RaycastHit hit;
+			Ray ray = new Ray(thisTrans.position, thisTrans.forward);
+			if(Physics.Raycast(ray, out hit))
+			{
+	            Collider hitCol = hit.collider;
+	            GameObject hitGo = hitCol.gameObject;
+				selectedGo = hitGo;
+	            float distance = (colTrans.position - hitCol.ClosestPointOnBounds(colTrans.position)).magnitude;
+	            if (hitGo.CompareTag("viewable") &&  distance <= thisCol.radius)
+	            {
+	                HoverCanvas.enabled = true;
+	                HoverText.text = "Name: " + hitGo.name + "\n" +
+	                    "Distance: " + distance;
+	            }
+	            else
+	            {
+	                HoverCanvas.enabled = false;
+	            }
+				
+			}
+			else
+			{
+				HoverCanvas.enabled = false;
+			}
 		}
 		else
 		{
-			HoverCanvas.enabled = false;
+
+			if(selectedObs.Count <= 0)
+			{
+				HoverCanvas.enabled = false;
+			}
+			else
+			{
+				AuraCanvas.enabled = true;
+				AuraText.text = "Selected:\n";
+				foreach(GameObject go in selectedObs)
+				{
+					AuraText.text += go.name + "\n";
+				}
+			}
 		}
 
 		// show list of obs in aura
