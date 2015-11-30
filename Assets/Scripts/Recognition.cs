@@ -8,7 +8,8 @@ public class Recognition : MonoBehaviour
     // Use this for initialization
     AuraDetector detector;
     public List<string> objectsRecognizedByBot;
-    public Dictionary<string, List<string>> predefinedWorkflow;
+	public Dictionary<string, Dictionary<string,int>> predefinedWorkflow;
+
     //Hey Sean
     //display foundworkflow at top corner if possible, I am currently logging to console
     public Dictionary<string, List<string>> foundWorkflow;
@@ -19,7 +20,8 @@ public class Recognition : MonoBehaviour
     {
         detector = this.transform.parent.GetComponentInChildren<AuraDetector>();
         objectsRecognizedByBot = new List<string>();
-        predefinedWorkflow = new Dictionary<string, List<string>>();
+		predefinedWorkflow = new Dictionary<string, Dictionary<string,int>> ();
+
         foundWorkflow = new Dictionary<string, List<string>>();
         initializeWorkflow();
     }
@@ -34,14 +36,22 @@ public class Recognition : MonoBehaviour
         List<GameObject> selectedObs = detector.selectedObs;
         //add objects interacted by workflow bot to the list of recognized objects(currently the ones in vicinity)
         string currentItem;
-        foreach (var item in auraObs)
+		foreach (var item in selectedObs)
         {
             currentItem = item.name.ToLower();
             if (!(objectsRecognizedByBot.Contains(currentItem)))
             {
                 objectsRecognizedByBot.Add(currentItem);
             }
-        }
+		}
+		foreach (var item in auraObs)
+		{
+			currentItem = item.name.ToLower();
+			if (!(objectsRecognizedByBot.Contains(currentItem)))
+			{
+				objectsRecognizedByBot.Add(currentItem);
+			}
+		}
 
         getWorkflow(objectsRecognizedByBot);
         if (counter <= foundWorkflow.Count)
@@ -58,53 +68,60 @@ public class Recognition : MonoBehaviour
 
     public void getWorkflow(List<string> objectsRecognizedByBot)
     {
+
         List<string> possibleWorkflows = new List<string>();
+
         List<string> workflowObjects;
+
         int itemsFoundInWorkflow = 0;
         string workflowName;
+
         double probabilityRate = 0;
+
         List<string> objectsCorrespondingToWorkflow;
         foreach (var item in predefinedWorkflow)
         {
-            workflowObjects = item.Value;
-            workflowName = item.Key.ToLower();
-            objectsCorrespondingToWorkflow = new List<string>();
-            if (!(foundWorkflow.ContainsKey(workflowName)))
-            {
-                foreach (var botObjects in objectsRecognizedByBot)
-                {
-                    if (workflowObjects.Contains(botObjects))
-                    {
-                        itemsFoundInWorkflow++;
-                        objectsCorrespondingToWorkflow.Add(botObjects);
-                    }
-                }
-                probabilityRate = 100.0 * itemsFoundInWorkflow / workflowObjects.Count;
-                if (probabilityRate >= 40)
-                {
-                    foundWorkflow.Add(workflowName, objectsCorrespondingToWorkflow);
-                }
-                itemsFoundInWorkflow = 0;
+            workflowObjects = item.Value.Keys.ToList<string>();
+			objectsCorrespondingToWorkflow = new List<string>();
+
+				workflowName = item.Key.ToLower();
+            	
+	            if (!(foundWorkflow.ContainsKey(workflowName)))
+	            {
+	                foreach (var botObjects in objectsRecognizedByBot)
+	                {
+	                    if (workflowObjects.Contains(botObjects))
+	                    {
+							itemsFoundInWorkflow+=item.Value[botObjects];
+	                        objectsCorrespondingToWorkflow.Add(botObjects);
+	                    }
+	                }
+	                probabilityRate = 100.0 * itemsFoundInWorkflow / item.Value["sum"];
+	                if (probabilityRate >= 40)
+	                {
+					objectsCorrespondingToWorkflow.Add(" [ Probability Rate = "+probabilityRate+ " ] ");
+	                    foundWorkflow.Add(workflowName, objectsCorrespondingToWorkflow);
+	                }
+	                itemsFoundInWorkflow = 0;
+
             }
         }
     }
     private void initializeWorkflow()
     {
-        //to be edited
-        List<string> brushingTeethObjects = new List<string>()
+       
+		var test = new Dictionary<string, int>
         {
-            "toothbrush", "toothpaste", "mirror", "hand","towel","sink"
-        };
-        List<string> washingCLothesObjects = new List<string>()
-        {
-            "ground", "leftwall", "sink2", "wall","jacuzzi"
-        };
-        List<string> test = new List<string>()
-        {
-            "ground", "leftwall", "sink2", "wall","jacuzzi"
-        };
-        predefinedWorkflow.Add("Brushing Teeth", brushingTeethObjects);
-        predefinedWorkflow.Add("Washing Clothes", washingCLothesObjects);
-        predefinedWorkflow.Add("test", test);
+			{"ground",1}, {"floor",4}, {"table",2}, {"wall",2},{"jacuzzi",2}, {"sum",11}
+		};
+		predefinedWorkflow.Add("test", test);
+        
+        
+		var x = new Dictionary<string, int>
+		{
+			{"toothbrush",3},{"toothpaste",3},{"mirror",1},{"sink",1},{"sum",8}
+		};
+		predefinedWorkflow.Add("Brushing Teeth", x);
+
     }
 }
