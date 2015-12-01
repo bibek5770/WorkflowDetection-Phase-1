@@ -73,11 +73,11 @@ public class AuraDetector : MonoBehaviour {
 			}
 			else
 			{
-				AuraCanvas.enabled = true;
-				AuraText.text = "Selected:\n";
+				HoverCanvas.enabled = true;
+				HoverText.text = "Selected:\n";
 				foreach(GameObject go in selectedObs)
 				{
-					AuraText.text += go.name + "\n";
+					HoverText.text += go.name + "\n";
 				}
 			}
 		}

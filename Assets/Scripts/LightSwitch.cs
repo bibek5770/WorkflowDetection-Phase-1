@@ -46,8 +46,8 @@ public class LightSwitch : MonoBehaviour {
         }
 	}
 
-    bool lightsOn = true;
-    void ToggleLights()
+    public bool lightsOn = true;
+    public void ToggleLights()
     {
         lightsOn = !lightsOn;
         if (lightsOn)

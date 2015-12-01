@@ -45,13 +45,22 @@ public class BotControlScript : MonoBehaviour
 	
 	public float v = 0f;
 	public float h = 0f;
+
+	public bool idling = true;
+	
+	void OnAnimatorIK()
+	{
+		anim.SetLookAtWeight(lookWeight);					// set the Look At Weight - amount to use look at IK vs using the head's animation
+	}
+
 	void FixedUpdate ()
 	{
 		
 		anim.SetFloat("Speed", v);							// set our animator's float parameter 'Speed' equal to the vertical input axis				
 		anim.SetFloat("Direction", h); 						// set our animator's float parameter 'Direction' equal to the horizontal input axis		
+		anim.SetBool("Idle", idling);
 		anim.speed = animSpeed;								// set the speed of our animator to the public variable 'animSpeed'
-		anim.SetLookAtWeight(lookWeight);					// set the Look At Weight - amount to use look at IK vs using the head's animation
+		//anim.SetLookAtWeight(lookWeight);					// set the Look At Weight - amount to use look at IK vs using the head's animation
 		currentBaseState = anim.GetCurrentAnimatorStateInfo(0);	// set our currentState variable to the current state of the Base Layer (0) of animation
 		
 		
