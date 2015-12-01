@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\AuraDetector.cs" />
      <Compile Include="Assets\Scripts\AutomataScript.cs" />
      <Compile Include="Assets\Scripts\BotControlScript.cs" />
+     <Compile Include="Assets\Scripts\CanvasFaceCamera.cs" />
      <Compile Include="Assets\Scripts\Controller.cs" />
      <Compile Include="Assets\Scripts\LightSwitch.cs" />
      <Compile Include="Assets\Scripts\MirrorTrack.cs" />

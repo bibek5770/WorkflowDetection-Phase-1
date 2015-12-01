@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.UI;
 
 public class Recognition : MonoBehaviour
 {
@@ -24,6 +25,8 @@ public class Recognition : MonoBehaviour
         initializeWorkflow();
     }
 
+	public GameObject recCanvas;
+	public Text recText;
     // Update is called once per frame
     void Update()
     {
@@ -46,10 +49,11 @@ public class Recognition : MonoBehaviour
         getWorkflow(objectsRecognizedByBot);
         if (counter <= foundWorkflow.Count)
         {
+
             for (int index = counter; index < foundWorkflow.Count; index++)
             {
                 var item = foundWorkflow.ElementAt(index);
-                Debug.Log("1. Possible Workflow  :=>\t" + item.Key +
+                recText.text = ("1. Possible Workflow  :=>\t" + item.Key +
                     "\n2. Recognized Objects:=>\t" + string.Join(" , ", item.Value.ToArray()));
             }
             counter = foundWorkflow.Count;
@@ -93,7 +97,7 @@ public class Recognition : MonoBehaviour
         //to be edited
         List<string> brushingTeethObjects = new List<string>()
         {
-            "toothbrush", "toothpaste", "mirror", "hand","towel","sink"
+            "toothbrush", "toothpaste", "mirror","towel","sink2"
         };
         List<string> washingCLothesObjects = new List<string>()
         {

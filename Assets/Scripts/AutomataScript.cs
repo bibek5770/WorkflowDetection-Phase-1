@@ -375,9 +375,10 @@ public class AutomataScript : MonoBehaviour
 		//drop toothbrush
 		thisAuraDetector.selectedObs.Remove(toothBrush);
 
+
 		Debug.Log("Done Brushing Teeth");
 		currentAction = null;
-		Debug.Log("Current action = " + (currentAction == null? "null" : "notnull"));
+		//Debug.Log("Current action = " + (currentAction == null? "null" : "notnull"));
 		yield return new WaitForSeconds(15f);
 	}
 
